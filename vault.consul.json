@@ -1,7 +1,7 @@
 disable_mlock = true
 
 backend "consul" {
-  address = "172.16.238.3:8500"
+  address = "172.16.238.2:8500"
   path = "vault"
 }
 

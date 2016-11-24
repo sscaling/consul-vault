@@ -35,6 +35,8 @@ services:
         ipv4_address: 172.16.238.4
     depends_on:
      - consulagent
+    environment:
+      VAULT_ADDR: http://172.168.238.4:8200
 
 networks:
   consul_network:
