@@ -1,0 +1,13 @@
+disable_mlock = true
+
+backend "consul" {
+  address = "172.16.238.3:8500"
+  path = "vault"
+}
+
+listener "tcp" {
+  address = "172.16.238.4:8200"
+  tls_disable = 1
+}
+
+

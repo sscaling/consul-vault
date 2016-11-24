@@ -17,10 +17,24 @@ services:
     networks:
       consul_network:
         ipv4_address: 172.16.238.3
+    depends_on:
+     - consul
 
 
   vault:
     image: vault
+    entrypoint: /bin/dumb-init
+    command: ["vault", "server", "-config=/vault/config/vault.consul.json"]
+    ports:
+     - "8200:8200"
+     - "8125:8125"
+    volumes:
+     - ./vault.consul.json:/vault/config/vault.consul.json
+    networks:
+      consul_network:
+        ipv4_address: 172.16.238.4
+    depends_on:
+     - consulagent
 
 networks:
   consul_network:
